@@ -1,0 +1,6 @@
+{
+  "sites": [
+    {"domain": "kadhar.in", "username": "u594631217", "type": "static", "branch": "site-luxury", "source": "luxury/"},
+    {"domain": "kadhar.store", "username": "u594631217", "type": "static", "branch": "site-store", "source": "streetwear/"}
+  ]
+}
