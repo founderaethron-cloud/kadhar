@@ -16,7 +16,7 @@ Garment and product data live at the top of `tools/build_luxury.py` and `tools/b
 Edit, then run `python3 tools/build_luxury.py` / `python3 tools/build_street.py` and commit the generated HTML.
 
 ## Hosting (Hostinger)
-Each domain auto-deploys from `main` with the deploy directory set to its folder: `luxury` for kadhar.in, `streetwear` for kadhar.store.
+Each site deploys from its own branch: `site-luxury` (kadhar.in) and `site-store` (kadhar.store). A GitHub Action (`.github/workflows/deploy-branches.yml`) rebuilds both branches from `luxury/` and `streetwear/` on every push to `main`; Hostinger auto-deploys each branch on push. Never edit the site branches directly.
 
 ## Placeholders to replace before launch
 - Logo: `LOGO PLACEHOLDER` comment in each header (text wordmark for now)

@@ -1,0 +1,26 @@
+# Keeps the Hostinger deploy branches in sync with main.
+# site-luxury  <- luxury/     (kadhar.in)
+# site-store   <- streetwear/ (kadhar.store)
+# Hostinger auto-deploys each branch into its website root on every push.
+name: Sync deploy branches
+on:
+  push:
+    branches: [main]
+    paths: ['luxury/**', 'streetwear/**', '.github/workflows/deploy-branches.yml']
+  workflow_dispatch:
+permissions:
+  contents: write
+jobs:
+  split:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+      - name: Push site branches
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "github-actions[bot]@users.noreply.github.com"
+          git subtree split --prefix=luxury -b site-luxury
+          git subtree split --prefix=streetwear -b site-store
+          git push --force origin site-luxury site-store
