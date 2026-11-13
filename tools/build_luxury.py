@@ -167,7 +167,7 @@ def w(path, s):
     p = os.path.join(OUT, path); os.makedirs(os.path.dirname(p), exist_ok=True); open(p, 'w').write(s)
 
 # ---------- Home ----------
-home = head('KADHAR — Handwoven streetwear', 'Architectural streetwear in handwoven Indian cotton. Small batches, made to last.', '', 'index.html') + f'''
+home = head('KADHAR — Handwoven luxury', 'Architectural luxury clothing in handwoven Indian cotton. Small batches, made to measure.', '', 'index.html') + f'''
 <section class="hero">
   <div class="hero__text">
     <div>
