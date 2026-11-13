@@ -1,0 +1,99 @@
+
+/* KADHAR components — plain CSS on the tokens.css variables. Prefix: kd- */
+
+.kd-root, body { background: var(--linen-100); color: var(--ink); font-family: var(--font-sans); font-size: 16px; line-height: 1.625; -webkit-font-smoothing: antialiased; }
+
+.kd-label { font: 600 12px/1.33 var(--font-sans); letter-spacing: .12em; text-transform: uppercase; }
+.kd-muted { color: var(--ink-muted); }
+.kd-tagline { font: italic 400 24px/1.45 var(--font-serif); }
+.kd-rule { border: 0; border-top: 1px solid var(--stone-300); margin: 0; }
+
+/* ---------- Button ---------- */
+.kd-btn { display: inline-flex; align-items: center; justify-content: center; gap: var(--space-2);
+  min-height: 48px; padding: 0 var(--space-8); border: 1px solid transparent; border-radius: var(--radius-0);
+  font: 600 13px/1 var(--font-sans); letter-spacing: .12em; text-transform: uppercase; text-decoration: none;
+  cursor: pointer; transition: background-color .24s ease-out, color .24s ease-out, border-color .24s ease-out; }
+.kd-btn:focus-visible, .kd-link:focus-visible, .kd-input:focus-visible, .kd-swatch:focus-visible, .kd-nav a:focus-visible { outline: 2px solid var(--focus); outline-offset: 2px; }
+.kd-btn--primary { background: var(--rust); color: var(--on-rust); }
+.kd-btn--primary:hover { background: var(--rust-deep); }
+.kd-btn--secondary { background: transparent; color: var(--ink); border-color: var(--ink); }
+.kd-btn--secondary:hover { background: var(--ink); color: var(--linen-100); }
+.kd-btn[disabled], .kd-btn[aria-disabled="true"] { background: var(--stone-200); color: var(--ink-muted); border-color: var(--stone-300); cursor: not-allowed; }
+.kd-link { color: var(--rust-text); font: 600 13px/1 var(--font-sans); letter-spacing: .12em; text-transform: uppercase;
+  text-decoration: underline; text-underline-offset: 6px; text-decoration-thickness: 1px; }
+.kd-link:hover { text-decoration-thickness: 2px; }
+
+/* ---------- Header ---------- */
+.kd-header { display: grid; grid-template-columns: auto 1fr auto; align-items: center; gap: var(--space-8);
+  padding: var(--space-4) var(--space-12); border-bottom: 1px solid var(--stone-300); background: var(--linen-100); }
+.kd-wordmark { font: 800 28px/1 var(--font-sans); letter-spacing: -.04em; color: var(--ink); text-decoration: none; }
+.kd-nav { display: flex; gap: var(--space-8); justify-content: center; }
+.kd-nav a { color: var(--ink); text-decoration: none; font: 600 12px/1 var(--font-sans); letter-spacing: .12em; text-transform: uppercase; padding: var(--space-2) 0; border-bottom: 1px solid transparent; }
+.kd-nav a:hover, .kd-nav a[aria-current="page"] { border-bottom-color: var(--ink); }
+.kd-header__end { display: flex; align-items: center; gap: var(--space-6); }
+
+/* ---------- Product card ---------- */
+.kd-card { display: block; color: var(--ink); text-decoration: none; }
+.kd-card__media { aspect-ratio: 4 / 5; background: var(--stone-200); overflow: hidden; }
+.kd-card__media img { width: 100%; height: 100%; object-fit: cover; display: block; transition: transform .6s ease-out; }
+.kd-card:hover .kd-card__media img { transform: scale(1.03); }
+.kd-card__body { padding-top: var(--space-4); display: grid; gap: var(--space-1); }
+.kd-card__num { font: 300 14px/1 var(--font-sans); color: var(--ink-muted); }
+.kd-card__name { font: 300 20px/1.2 var(--font-sans); text-transform: uppercase; letter-spacing: -.005em; margin: 0; }
+.kd-card__meta { display: flex; justify-content: space-between; align-items: center; font-size: 14px; color: var(--ink-muted); }
+.kd-card__price { color: var(--ink); font-weight: 500; }
+
+/* ---------- Fabric chip ---------- */
+.kd-fabric { display: inline-flex; align-items: center; gap: var(--space-2); padding: 6px var(--space-3) 6px 6px;
+  border: 1px solid var(--stone-300); border-radius: var(--radius-sm); background: var(--linen-50); font-size: 14px; }
+.kd-fabric__code { background: var(--forest); color: var(--on-forest); border-radius: var(--radius-sm); padding: 4px 8px; font: 600 12px/1 var(--font-sans); letter-spacing: .08em; }
+
+/* ---------- Colourway picker ---------- */
+.kd-swatches { display: flex; gap: var(--space-4); border: 0; padding: 0; margin: 0; }
+.kd-swatch { display: grid; justify-items: center; gap: var(--space-2); background: none; border: 0; padding: 0; cursor: pointer; color: var(--ink-muted); font: 600 11px/1 var(--font-sans); letter-spacing: .12em; text-transform: uppercase; }
+.kd-swatch__dot { width: 36px; height: 36px; border-radius: var(--radius-full); box-shadow: inset 0 0 0 1px rgba(31,27,24,.18); outline: 1px solid transparent; outline-offset: 3px; }
+.kd-swatch[aria-pressed="true"] { color: var(--ink); }
+.kd-swatch[aria-pressed="true"] .kd-swatch__dot { outline: 1.5px solid var(--ink); }
+
+/* ---------- Garment spec ---------- */
+.kd-spec { display: grid; grid-template-columns: 5fr 7fr; gap: var(--space-12); }
+.kd-spec__title { font: 300 48px/1.05 var(--font-sans); letter-spacing: -.01em; text-transform: uppercase; margin: 0; }
+.kd-spec__block { padding: var(--space-6) 0; border-top: 1px solid var(--stone-300); }
+.kd-spec__block h3 { margin: 0 0 var(--space-3); }
+.kd-spec__list { margin: 0; padding: 0; list-style: none; display: grid; gap: var(--space-1); }
+.kd-spec__list li::before { content: "– "; color: var(--ink-muted); }
+.kd-innov { display: grid; grid-template-columns: 32px 1fr; gap: var(--space-1) var(--space-3); }
+.kd-innov dt { font: 300 14px/1.5 var(--font-sans); color: var(--ink-muted); }
+.kd-innov dd { margin: 0 0 var(--space-4); }
+.kd-innov strong { display: block; font: 600 12px/1.6 var(--font-sans); letter-spacing: .12em; text-transform: uppercase; }
+
+/* ---------- Form ---------- */
+.kd-field { display: grid; gap: var(--space-2); }
+.kd-field label { font: 600 12px/1.33 var(--font-sans); letter-spacing: .12em; text-transform: uppercase; }
+.kd-input { height: 48px; padding: 0 var(--space-4); border: 1px solid var(--stone-500); border-radius: var(--radius-0); background: var(--linen-50); color: var(--ink); font: 400 16px var(--font-sans); }
+.kd-input:hover { border-color: var(--ink); }
+.kd-help { font-size: 14px; color: var(--ink-muted); margin: 0; }
+.kd-field--error .kd-input { border-color: var(--error); }
+.kd-field--error .kd-help { color: var(--error); }
+
+/* ---------- Manifesto ---------- */
+.kd-manifesto { background: var(--forest); color: var(--on-forest); padding: var(--space-24) var(--space-12); text-align: center; }
+.kd-manifesto blockquote { margin: 0 auto; max-width: 760px; font: italic 400 36px/1.35 var(--font-serif); }
+.kd-manifesto cite { display: block; margin-top: var(--space-6); font: normal 600 12px/1 var(--font-sans); letter-spacing: .12em; text-transform: uppercase; }
+
+/* ---------- Footer ---------- */
+.kd-footer { background: var(--rust); color: var(--on-rust); padding: var(--space-16) var(--space-12) var(--space-8); }
+.kd-footer a { color: var(--on-rust); text-decoration: none; }
+.kd-footer a:hover { text-decoration: underline; text-underline-offset: 4px; }
+.kd-footer__mark { font: 800 96px/.9 var(--font-sans); letter-spacing: -.04em; margin: var(--space-12) 0 0; }
+
+@media (max-width: 767px) {
+  .kd-header { grid-template-columns: auto 1fr auto; padding: var(--space-4) var(--space-6); }
+  .kd-nav { display: none; }
+  .kd-spec { grid-template-columns: 1fr; gap: var(--space-6); }
+  .kd-spec__title { font-size: 32px; }
+  .kd-manifesto { padding: var(--space-16) var(--space-6); }
+  .kd-manifesto blockquote { font-size: 26px; }
+  .kd-footer { padding: var(--space-12) var(--space-6) var(--space-6); }
+  .kd-footer__mark { font-size: 56px; }
+}

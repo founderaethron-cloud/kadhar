@@ -1,0 +1,68 @@
+<!doctype html>
+<html lang="en" data-theme="light">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Atelier — Book a fitting — KADHAR</title>
+<link rel="icon" href="data:,">
+<meta name="description" content="Book a private fitting with KADHAR, in person or by video. Made to measure.">
+<link rel="stylesheet" href="assets/css/tokens.css">
+<link rel="stylesheet" href="assets/css/components.css">
+<link rel="stylesheet" href="assets/css/site.css">
+</head>
+<body class="kd-root">
+<a class="skip" href="#main">Skip to content</a>
+<div class="site-header">
+<header class="kd-header">
+  <!-- LOGO PLACEHOLDER: replace this text wordmark with the KADHAR logo file when supplied -->
+  <a class="kd-wordmark" href="index.html" aria-label="KADHAR home">KADHAR</a>
+  <nav class="kd-nav" aria-label="Main"><a href="collection.html">Collection</a><a href="fabrics.html">Fabrics</a><a href="atelier.html" aria-current="page">Atelier</a><a href="house.html">House</a><a href="journal.html">Journal</a></nav>
+  <div class="kd-header__end"><a class="kd-link" href="atelier.html">Book a fitting</a><button class="menu-btn kd-label" aria-expanded="false" aria-controls="drawer">Menu</button></div>
+</header>
+<nav class="drawer" id="drawer" aria-label="Mobile"><a href="collection.html">Collection</a><a href="fabrics.html">Fabrics</a><a href="atelier.html">Atelier</a><a href="house.html">House</a><a href="journal.html">Journal</a><a href="atelier.html">Book a fitting</a></nav>
+</div>
+<main id="main">
+
+<section class="page-head"><div class="wrap">
+  <span class="kd-label eyebrow">Atelier</span>
+  <h1 class="display-l">Book a fitting</h1>
+  <p class="tagline" style="margin-top:var(--space-4)">Every garment begins with a conversation.</p>
+</div></section>
+<section class="section"><div class="wrap split" style="align-items:start">
+  <div class="stack-6" id="made-to-measure">
+    <h2 class="heading-2">Made to measure</h2>
+    <p class="body-l kd-muted">A private fitting, in person or by video. We take your measurements, adjust the pattern and finish the garment to fit you.</p>
+    <div class="steps" style="grid-template-columns:1fr">
+      <div class="step" style="border-right:0;border-bottom:1px solid var(--stone-300);padding:var(--space-6) 0"><span class="kd-label kd-muted">01</span><h3 class="heading-3">Request</h3><p class="kd-muted">Choose a garment and a time.</p></div>
+      <div class="step" style="border-right:0;border-bottom:1px solid var(--stone-300);padding:var(--space-6) 0"><span class="kd-label kd-muted">02</span><h3 class="heading-3">Fitting</h3><p class="kd-muted">Measurements, fabric and fit, in conversation.</p></div>
+      <div class="step" style="border-right:0;padding:var(--space-6) 0"><span class="kd-label kd-muted">03</span><h3 class="heading-3">Finishing</h3><p class="kd-muted">Your garment, adjusted and delivered.</p></div>
+    </div>
+  </div>
+  <form class="form-grid" data-preview novalidate aria-labelledby="form-title">
+    <h2 id="form-title" class="heading-3 full">Request a fitting</h2>
+    <div class="kd-field"><label for="name">Name</label><input class="kd-input" id="name" name="name" autocomplete="name" required><p class="kd-help">Required.</p></div>
+    <div class="kd-field"><label for="email">Email</label><input class="kd-input" id="email" name="email" type="email" autocomplete="email" required><p class="kd-help">We confirm your fitting here.</p></div>
+    <div class="kd-field"><label for="phone">Phone</label><input class="kd-input" id="phone" name="phone" type="tel" autocomplete="tel"><p class="kd-help">Optional, for a call back.</p></div>
+    <div class="kd-field"><label for="mode">Fitting</label><select class="kd-input" id="mode" name="mode"><option>In person</option><option>Video call</option></select></div>
+    <div class="kd-field full"><label for="garment">Garment</label><select class="kd-input" id="garment" name="garment"><option value="">Not sure yet</option><option value="01">01 — The Floating Overshirt</option><option value="02">02 — Urban Kimono Jacket</option><option value="03">03 — Cargo 2.0</option><option value="04">04 — Modular Travel Coat</option><option value="05">05 — Desert Nomad Set</option><option value="06">06 — The Wrapped Hoodie</option><option value="07">07 — Architect Shirt</option><option value="08">08 — Infinity Scarf Jacket</option><option value="09">09 — Urban Dhoti Trouser</option></select></div>
+    <div class="kd-field full"><label for="date">Preferred date</label><input class="kd-input" id="date" name="date" type="date"></div>
+    <div class="kd-field full"><label for="notes">Notes</label><textarea class="kd-input" id="notes" name="notes" placeholder="Anything we should know about fit or occasion"></textarea></div>
+    <div class="full"><button class="kd-btn kd-btn--primary" type="submit">Request fitting</button></div>
+    <p class="notice full" tabindex="-1" hidden>Preview only: fitting requests are not connected yet. Nothing has been sent.</p>
+  </form>
+</div></section>
+</main>
+<footer class="kd-footer">
+  <div class="footer-cols">
+    <div><span class="kd-label">Collection</span><a href="collection.html">All garments</a><a href="garments/01-floating-overshirt.html">Overshirts</a><a href="garments/04-modular-travel-coat.html">Outerwear</a><a href="garments/03-cargo-2.html">Trousers</a></div>
+    <div><span class="kd-label">Atelier</span><a href="atelier.html">Book a fitting</a><a href="atelier.html#made-to-measure">Made to measure</a><a href="house.html#care">Care</a></div>
+    <div><span class="kd-label">House</span><a href="house.html">Our standard</a><a href="fabrics.html">Fabrics</a><a href="journal.html">Journal</a><a href="https://kadhar.store" rel="noopener">KADHAR Street ↗</a></div>
+    <div><span class="kd-label">Letters</span><span>New drops and stories from the loom.</span>
+      <form class="news" data-preview onsubmit="return false"><label class="skip" for="nl-r">Email</label><input id="nl-r" type="email" placeholder="Your email" required><button type="submit">Join</button></form></div>
+  </div>
+  <p class="kd-footer__mark" aria-hidden="true">KADHAR</p>
+  <div class="footer-legal"><span>© 2026 KADHAR. <span class="ph" title="Company and GST details placeholder">Company details</span></span><span><a href="#">Privacy</a> · <a href="#">Terms</a> · <a href="#">Shipping &amp; returns</a></span></div>
+</footer>
+<script src="assets/js/site.js"></script>
+</body>
+</html>

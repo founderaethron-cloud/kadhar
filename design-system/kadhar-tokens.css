@@ -1,0 +1,93 @@
+/* KADHAR design tokens — generated from tokens.json. Use names, never raw values. */
+@import url('https://fonts.googleapis.com/css2?family=Archivo:wght@300;400;500;600;700;800&family=Newsreader:ital,opsz,wght@1,6..72,400&display=swap');
+
+:root, [data-theme="light"] {
+  --linen-50: #F6F2EC;
+  --linen-100: #EEE8E1;
+  --stone-200: #E2D9CE;
+  --stone-300: #CFC4B6;
+  --stone-500: #8C7F72;
+  --ink: #1F1B18;
+  --ink-muted: #62574E;
+  --rust: #622916;
+  --rust-deep: #4A1E10;
+  --rust-text: #622916;
+  --on-rust: #F6F2EC;
+  --forest: #2E4636;
+  --forest-text: #2E4636;
+  --on-forest: #F6F2EC;
+  --clay: #B4532A;
+  --success: #2F6B3A;
+  --warning: #8A5A0B;
+  --error: #A8281A;
+  --focus: #1F1B18;
+  --overlay: rgba(22,19,17,0.55);
+  --swatch-ivory: #EFEAE0;
+  --swatch-stone: #D8CFC2;
+  --swatch-sand: #BFA987;
+  --swatch-olive: #3D3E22;
+  --swatch-forest: #2F5A3C;
+  --swatch-slate: #5E5E62;
+  --swatch-charcoal: #26252A;
+  --swatch-indigo: #26324F;
+  --shadow-none: none;
+  --shadow-overlay: 0 24px 48px -12px rgba(31,27,24,0.22);
+}
+
+[data-theme="dark"] {
+  --linen-50: #201C19;
+  --linen-100: #161311;
+  --stone-200: #2A2420;
+  --stone-300: #3A332E;
+  --stone-500: #6E645B;
+  --ink: #EEE8E1;
+  --ink-muted: #A99D91;
+  --rust: #8A3A20;
+  --rust-deep: #9E4728;
+  --rust-text: #E39A7C;
+  --forest-text: #93B79C;
+  --clay: #C0643A;
+  --success: #7FC28C;
+  --warning: #E2B25A;
+  --error: #F08A78;
+  --focus: #EEE8E1;
+  --overlay: rgba(0,0,0,0.65);
+  --shadow-overlay: 0 24px 48px -12px rgba(0,0,0,0.6);
+}
+
+:root {
+  --space-1: 4px;
+  --space-2: 8px;
+  --space-3: 12px;
+  --space-4: 16px;
+  --space-6: 24px;
+  --space-8: 32px;
+  --space-12: 48px;
+  --space-16: 64px;
+  --space-24: 96px;
+  --space-40: 160px;
+  --width-text: 680px;
+  --width-page: 1440px;
+  --radius-0: 0px;
+  --radius-sm: 2px;
+  --radius-full: 9999px;
+  --font-sans: "Archivo", "Helvetica Neue", Arial, sans-serif;
+  --font-serif: "Newsreader", Georgia, "Times New Roman", serif;
+}
+
+.display-xl { font-family: var(--font-sans); font-size: 120px; line-height: 0.9; font-weight: 800; letter-spacing: -0.04em; text-transform: uppercase; }
+.display-l { font-family: var(--font-sans); font-size: 72px; line-height: 0.95; font-weight: 800; letter-spacing: -0.03em; text-transform: uppercase; }
+.title-xl { font-family: var(--font-sans); font-size: 48px; line-height: 1.05; font-weight: 300; letter-spacing: -0.01em; text-transform: uppercase; }
+.heading-2 { font-family: var(--font-sans); font-size: 28px; line-height: 1.2; font-weight: 400; letter-spacing: -0.01em; }
+.heading-3 { font-family: var(--font-sans); font-size: 20px; line-height: 1.35; font-weight: 500; }
+.body-l { font-family: var(--font-sans); font-size: 18px; line-height: 1.65; font-weight: 400; }
+.body { font-family: var(--font-sans); font-size: 16px; line-height: 1.625; font-weight: 400; }
+.small { font-family: var(--font-sans); font-size: 14px; line-height: 1.55; font-weight: 400; }
+.label { font-family: var(--font-sans); font-size: 12px; line-height: 1.33; font-weight: 600; letter-spacing: 0.12em; text-transform: uppercase; }
+.tagline { font-family: var(--font-serif); font-size: 24px; line-height: 1.45; font-weight: 400; font-style: italic; }
+
+@media (max-width: 767px) {
+  .display-xl { font-size: 56px; }
+  .display-l { font-size: 40px; }
+  .title-xl { font-size: 32px; }
+}
