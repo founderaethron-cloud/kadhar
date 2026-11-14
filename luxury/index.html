@@ -9,8 +9,9 @@
 <link rel="stylesheet" href="assets/css/tokens.css">
 <link rel="stylesheet" href="assets/css/components.css">
 <link rel="stylesheet" href="assets/css/site.css">
+<link rel="stylesheet" href="assets/css/motion.css">
 </head>
-<body class="kd-root">
+<body class="kd-root" data-motion="home">
 <a class="skip" href="#main">Skip to content</a>
 <div class="site-header">
 <header class="kd-header">
@@ -35,7 +36,14 @@
       <a class="kd-link" href="atelier.html">Book a fitting</a>
     </div>
   </div>
-  <div class="hero__media"><img src="assets/img/home-hero.webp" alt="Model in the Floating Overshirt in stone, among sculptural forms"></div>
+  <div class="hero__media weave">
+    <!-- PLACEHOLDER IMAGE: stand-in fabric close-up cropped from the product deck's flat lay.
+         Replace assets/img/fabric-macro.webp with a real macro photo of KADHAR handwoven cotton
+         (KH-01 stone, at least 2400x3000, raking side light). Footage can later replace the img with a muted,
+         playsinline <video> using this file as its poster. -->
+    <img class="weave__img" src="assets/img/fabric-macro.webp" alt="Close-up of handwoven cotton" width="760" height="1076" fetchpriority="high">
+    <span class="weave__light" aria-hidden="true"></span>
+  </div>
 </section>
 
 <section class="section"><div class="wrap">
@@ -110,5 +118,6 @@
   <div class="footer-legal"><span>© 2026 KADHAR. <span class="ph" title="Company and GST details placeholder">Company details</span></span><span><a href="#">Privacy</a> · <a href="#">Terms</a> · <a href="#">Shipping &amp; returns</a></span></div>
 </footer>
 <script src="assets/js/site.js"></script>
+<script src="assets/js/motion.js" defer></script>
 </body>
 </html>

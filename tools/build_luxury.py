@@ -98,7 +98,10 @@ G = [
 
 NAV = [('collection.html','Collection'),('fabrics.html','Fabrics'),('atelier.html','Atelier'),('house.html','House'),('journal.html','Journal')]
 
-def head(title, desc, root, active):
+# Motion (site-motion-3d, Nov 2026): in scope on the home page and 03 Cargo 2.0 only.
+MOTION_GARMENTS = {'03'}
+
+def head(title, desc, root, active, motion=''):
     nav = ''.join(f'<a href="{root}{h}"{" aria-current=\"page\"" if h==active else ""}>{t}</a>' for h,t in NAV)
     drawer = ''.join(f'<a href="{root}{h}">{t}</a>' for h,t in NAV) + f'<a href="{root}atelier.html">Book a fitting</a>'
     return f'''<!doctype html>
@@ -112,8 +115,9 @@ def head(title, desc, root, active):
 <link rel="stylesheet" href="{root}assets/css/tokens.css">
 <link rel="stylesheet" href="{root}assets/css/components.css">
 <link rel="stylesheet" href="{root}assets/css/site.css">
+<link rel="stylesheet" href="{root}assets/css/motion.css">
 </head>
-<body class="kd-root">
+<body class="kd-root"{f' data-motion="{motion}"' if motion else ''}>
 <a class="skip" href="#main">Skip to content</a>
 <div class="site-header">
 <header class="kd-header">
@@ -141,6 +145,7 @@ def foot(root):
   <div class="footer-legal"><span>© 2026 KADHAR. <span class="ph" title="Company and GST details placeholder">Company details</span></span><span><a href="#">Privacy</a> · <a href="#">Terms</a> · <a href="#">Shipping &amp; returns</a></span></div>
 </footer>
 <script src="{root}assets/js/site.js"></script>
+<script src="{root}assets/js/motion.js" defer></script>
 </body>
 </html>
 '''
@@ -167,7 +172,7 @@ def w(path, s):
     p = os.path.join(OUT, path); os.makedirs(os.path.dirname(p), exist_ok=True); open(p, 'w').write(s)
 
 # ---------- Home ----------
-home = head('KADHAR — Handwoven luxury', 'Architectural luxury clothing in handwoven Indian cotton. Small batches, made to measure.', '', 'index.html') + f'''
+home = head('KADHAR — Handwoven luxury', 'Architectural luxury clothing in handwoven Indian cotton. Small batches, made to measure.', '', 'index.html', 'home') + f'''
 <section class="hero">
   <div class="hero__text">
     <div>
@@ -180,7 +185,14 @@ home = head('KADHAR — Handwoven luxury', 'Architectural luxury clothing in han
       <a class="kd-link" href="atelier.html">Book a fitting</a>
     </div>
   </div>
-  <div class="hero__media"><img src="assets/img/home-hero.webp" alt="Model in the Floating Overshirt in stone, among sculptural forms"></div>
+  <div class="hero__media weave">
+    <!-- PLACEHOLDER IMAGE: stand-in fabric close-up cropped from the product deck's flat lay.
+         Replace assets/img/fabric-macro.webp with a real macro photo of KADHAR handwoven cotton
+         (KH-01 stone, at least 2400x3000, raking side light). Footage can later replace the img with a muted,
+         playsinline <video> using this file as its poster. -->
+    <img class="weave__img" src="assets/img/fabric-macro.webp" alt="Close-up of handwoven cotton" width="760" height="1076" fetchpriority="high">
+    <span class="weave__light" aria-hidden="true"></span>
+  </div>
 </section>
 
 <section class="section"><div class="wrap">
@@ -244,10 +256,13 @@ w('collection.html', coll)
 for i, g in enumerate(G):
     nxt = G[(i+1) % len(G)]
     imgs = ''.join(f'<img src="../assets/img/{im}.webp" alt="{E(g["name"])}{" — view "+str(k+1) if k else ""}"{" loading=\"lazy\"" if k else ""}>' for k,im in enumerate(g['imgs']))
+    motion = 'garment' if g['n'] in MOTION_GARMENTS else ''
+    if motion:  # wrap each photo so it can zoom inside its frame
+        imgs = ''.join(f'<div class="kd-zoom"><img src="../assets/img/{im}.webp" alt="{E(g["name"])}{" — view "+str(k+1) if k else ""}"{" loading=\"lazy\"" if k else ""}></div>' for k,im in enumerate(g['imgs']))
     sw = ''.join(f'<button class="kd-swatch" type="button" data-name="{n}" aria-pressed="{"true" if k==0 else "false"}"><span class="kd-swatch__dot" style="background:var(--swatch-{c})"></span>{n}</button>' for k,(n,c) in enumerate(g['colours']))
     inn = ''.join(f'<dt>{k+1:02d}</dt><dd><strong>{E(t)}</strong>{E(d)}</dd>' for k,(t,d) in enumerate(g['innov']))
     feats = ''.join(f'<li>{E(f)}</li>' for f in g['features'])
-    page = head(f"{g['name']} — KADHAR", f"{g['name']}: {g['concept']}", '../', 'collection.html') + f'''
+    page = head(f"{g['name']} — KADHAR", f"{g['name']}: {g['concept']}", '../', 'collection.html', motion) + f'''
 <section class="garment">
   <div class="garment__media">{imgs}</div>
   <div class="garment__info"><div class="garment__sticky">
