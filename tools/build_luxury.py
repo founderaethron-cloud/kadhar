@@ -98,8 +98,8 @@ G = [
 
 NAV = [('collection.html','Collection'),('fabrics.html','Fabrics'),('atelier.html','Atelier'),('house.html','House'),('journal.html','Journal')]
 
-# Motion (site-motion-3d, Nov 2026): in scope on the home page and 03 Cargo 2.0 only.
-MOTION_GARMENTS = {'03'}
+# Motion (site-motion-3d, Nov 2026): every page. All garment pages get reveals + zoom on hover.
+MOTION_GARMENTS = {g['n'] for g in G}
 
 def head(title, desc, root, active, motion=''):
     nav = ''.join(f'<a href="{root}{h}"{" aria-current=\"page\"" if h==active else ""}>{t}</a>' for h,t in NAV)
@@ -239,7 +239,7 @@ w('index.html', home)
 
 # ---------- Collection ----------
 cats = [('all','All'),('shirts','Shirts'),('outerwear','Outerwear'),('trousers','Trousers'),('tops','Tops'),('sets','Sets')]
-coll = head('Collection — KADHAR', 'Nine garments in handwoven cotton: overshirts, jackets, coats, trousers and sets.', '', 'collection.html') + f'''
+coll = head('Collection — KADHAR', 'Nine garments in handwoven cotton: overshirts, jackets, coats, trousers and sets.', '', 'collection.html', 'collection') + f'''
 <section class="page-head"><div class="wrap">
   <span class="kd-label eyebrow">Collection 01</span>
   <h1 class="display-l">The collection</h1>
@@ -294,7 +294,7 @@ for i, g in enumerate(G):
 FAB = [('KH-01','Handwoven cotton','Luxury everyday. The foundation cloth.'),('KH-02','Handwoven cotton + hemp','Structure and strength for outerwear and utility.'),
        ('KH-03','Handwoven cotton + TENCEL™ Lyocell','Fluid drape for relaxed, oversized pieces.'),('KH-04','Handwoven cotton + linen','Cool and breathable for summer.'),
        ('KH-05','Handwoven cotton + silk','A luxury capsule cloth.'),('KH-06','Handwoven cotton + bamboo','Ultra-soft, with moisture management.'),('KH-07','Travel weave','Lighter, wrinkle-resistant, made to pack.')]
-fab = head('Fabrics — KADHAR', 'The KADHAR fabric library: handwoven cotton platforms KH-01 to KH-07.', '', 'fabrics.html') + f'''
+fab = head('Fabrics — KADHAR', 'The KADHAR fabric library: handwoven cotton platforms KH-01 to KH-07.', '', 'fabrics.html', 'fabrics') + f'''
 <section class="page-head"><div class="wrap split">
   <div><span class="kd-label eyebrow">The fabric library</span><h1 class="display-l">Cloth first</h1></div>
   <p class="body-l kd-muted">We don’t name garments by fabric composition. We build fabric platforms, each engineered for a purpose, and design garments around them.</p>
@@ -319,7 +319,7 @@ w('fabrics.html', fab)
 
 # ---------- Atelier ----------
 opts = ''.join(f'<option value="{g["n"]}">{g["n"]} — {E(g["name"])}</option>' for g in G)
-at = head('Atelier — Book a fitting — KADHAR', 'Book a private fitting with KADHAR, in person or by video. Made to measure.', '', 'atelier.html') + f'''
+at = head('Atelier — Book a fitting — KADHAR', 'Book a private fitting with KADHAR, in person or by video. Made to measure.', '', 'atelier.html', 'atelier') + f'''
 <section class="page-head"><div class="wrap">
   <span class="kd-label eyebrow">Atelier</span>
   <h1 class="display-l">Book a fitting</h1>
@@ -352,7 +352,7 @@ at = head('Atelier — Book a fitting — KADHAR', 'Book a private fitting with 
 w('atelier.html', at)
 
 # ---------- House ----------
-house = head('House — KADHAR', 'The KADHAR standard: handwoven cloth, plant-based colour, small batches.', '', 'house.html') + f'''
+house = head('House — KADHAR', 'The KADHAR standard: handwoven cloth, plant-based colour, small batches.', '', 'house.html', 'house') + f'''
 <section class="page-head"><div class="wrap">
   <span class="kd-label eyebrow">The house</span>
   <h1 class="display-l">A quest<br>for mastery</h1>
@@ -384,7 +384,7 @@ w('house.html', house)
 stories = [('The Basement','How a garment is drafted, sampled and tested before it is cut.','overshirt-sculpture'),
            ('Indigo Passage','Inside the dye vats: where KADHAR colour comes from.','cargo-forest'),
            ('The Flagship','A room built for fittings, not for crowds.','coat-sculpture')]
-jr = head('Journal — KADHAR', 'Stories from the loom, the dye vat and the atelier.', '', 'journal.html') + f'''
+jr = head('Journal — KADHAR', 'Stories from the loom, the dye vat and the atelier.', '', 'journal.html', 'journal') + f'''
 <section class="page-head"><div class="wrap">
   <span class="kd-label eyebrow">Journal</span>
   <h1 class="display-l">From the loom</h1>

@@ -33,12 +33,25 @@
     });
   }
 
-  if (mode === 'home') {
-    prep(document.querySelectorAll('.grid-4 .kd-card'), 'kd-rv', 80);          // the collection, one after another
-    prep(document.querySelectorAll('.kd-manifesto blockquote, .kd-manifesto cite'), 'kd-fade', 0);
-    prep(document.querySelectorAll('.split__media'), 'kd-settle', 0);          // images settle: "slow by design"
-    prep(document.querySelectorAll('.steps .step'), 'kd-rv', 120);             // Basement → Indigo Passage → Flagship, in order
+  // Stagger by column so later rows don't wait for earlier ones.
+  function cols(grid) { return grid ? getComputedStyle(grid).gridTemplateColumns.split(' ').length : 1; }
+  function prepGrid(sel, cls, step) {
+    document.querySelectorAll(sel).forEach(function (grid) {
+      var n = cols(grid);
+      Array.prototype.forEach.call(grid.children, function (el, i) {
+        if (el.getBoundingClientRect().top < fold) return;
+        el.classList.add(cls); el.style.transitionDelay = ((i % n) * step) + 'ms'; io.observe(el);
+      });
+    });
   }
+
+  // Same rules on every page; each selector only matches where that content exists.
+  prepGrid('.grid-4, .grid-5', 'kd-rv', 80);                                   // garments, one after another
+  prepGrid('.grid-3', 'kd-rv', 80);                                            // journal stories
+  prep(document.querySelectorAll('.kd-manifesto blockquote, .kd-manifesto cite'), 'kd-fade', 0);
+  prep(document.querySelectorAll('.split__media'), 'kd-settle', 0);            // images settle: "slow by design"
+  prep(document.querySelectorAll('.steps .step'), 'kd-rv', 120);               // processes appear in order
+  prep(document.querySelectorAll('.fabric-row'), 'kd-fade', 90);               // KH-01 to KH-07, in sequence
   if (mode === 'garment') {
     prep(document.querySelectorAll('.garment__media > :not(:first-child)'), 'kd-rv', 0);
   }
@@ -48,8 +61,12 @@
     document.querySelectorAll('.kd-zoom').forEach(function (z) {
       var img = z.querySelector('img');
       if (!img) return;
-      z.classList.add('is-zoomable');
-      z.addEventListener('pointerenter', function () { z.classList.add('is-zooming'); });
+      // Quality guard: only zoom photos that are at least as wide as they are shown,
+      // so a small image is never blown up into a blur. Re-checked on each hover.
+      function sharp() { return img.naturalWidth >= z.getBoundingClientRect().width; }
+      function mark() { z.classList.toggle('is-zoomable', sharp()); }
+      if (img.complete) mark(); else img.addEventListener('load', mark);
+      z.addEventListener('pointerenter', function () { mark(); if (sharp()) z.classList.add('is-zooming'); });
       z.addEventListener('pointerleave', function () { z.classList.remove('is-zooming'); });
       z.addEventListener('pointermove', function (e) {
         var r = z.getBoundingClientRect();
